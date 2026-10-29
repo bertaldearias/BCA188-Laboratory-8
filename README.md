@@ -19,8 +19,7 @@
 
 <a href="#spi-loopback-testing"><img src="assets/btn_spi.svg" alt="SPI LOOPBACK" width="268"></a><a href="#baud-rate-experiment"><img src="assets/btn_baud-rate.svg" alt="BAUD RATE" width="268"></a><a href="#expected-vs-observed-results"><img src="assets/btn_results.svg" alt="RESULTS" width="268"></a>
 
-<a href="#guide-questions"><img src="assets/btn_questions.svg" alt="GUIDE QUESTIONS" width="268"></a><a href="#conclusion"><img src="assets/btn_conclusion.svg" alt="CONCLUSION" width="268"></a>
-
+<a href="#guide-questions"><img src="assets/btn_questions.svg" alt="GUIDE QUESTIONS" width="268"></a>
 </div>
 
 ---

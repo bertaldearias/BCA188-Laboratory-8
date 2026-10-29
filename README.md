@@ -427,22 +427,6 @@ CS is set HIGH to deselect the SPI device when no communication is taking place.
 
 [![Back to Navigation](https://img.shields.io/badge/BACK-NAVIGATION-559BC5?style=for-the-badge)](#navigation)
 
----
-
-## Conclusion
-
-![Light blue section divider](assets/section_bar.svg)
-
-Laboratory Activity 8 demonstrated the operation of three wired communication interfaces using the ESP32-DevKitC: UART, I2C, and SPI.
-
-UART loopback communication successfully returned the transmitted `PING` messages when TX and RX were connected. The I2C scanner detected the OLED display at address `0x3C`, while SPI loopback successfully returned the transmitted byte `0xA5`.
-
-The experiments also demonstrated how removing physical connections affects communication and how mismatched serial baud rates can cause unreadable output.
-
-Overall, the activity provided practical experience in configuring, testing, and troubleshooting wired communication interfaces using the ESP32 microcontroller.
-
----
-
 <div align="center">
 
 **BCA188 — Laboratory Activity 8**

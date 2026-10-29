@@ -1,0 +1,14 @@
+
+# Arduino temporary build files
+build/
+*.hex
+*.elf
+*.bin
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Editor temporary files
+*.swp
+*.tmp

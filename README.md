@@ -1,15 +1,9 @@
 
 <div align="center">
 
-![BCA188 Laboratory 8](https://placehold.co/1100x150/E5F5FF/285570.png?text=BCA188+%7C+WIRED+COMMUNICATION)
+<img src="assets/header.svg" alt="BCA188 Laboratory Activity 8 Wired Communication" width="100%">
 
-### Laboratory Activity 8
-
-**UART · I2C · SPI**
-
-ESP32-DevKitC (ESP-WROOM-32) | Arduino IDE
-
-*Laboratory Documentation and Experimental Results*
+**ESP32-DevKitC (ESP-WROOM-32)** · **Arduino IDE** · **Laboratory Documentation**
 
 </div>
 
@@ -19,22 +13,13 @@ ESP32-DevKitC (ESP-WROOM-32) | Arduino IDE
 
 <div align="center">
 
-<a href="#project-overview"><img src="https://img.shields.io/badge/01-OVERVIEW-559BC5?style=plastic" height="48" alt="Overview"></a>
-<a href="#materials-and-equipment"><img src="https://img.shields.io/badge/02-MATERIALS-559BC5?style=plastic" height="48" alt="Materials"></a>
+<a href="#project-overview"><img src="assets/btn_overview.svg" alt="OVERVIEW" width="268"></a><a href="#materials-and-equipment"><img src="assets/btn_materials.svg" alt="MATERIALS" width="268"></a><a href="#gpio-pin-assignments"><img src="assets/btn_gpio-pins.svg" alt="GPIO PINS" width="268"></a>
 
-<a href="#gpio-pin-assignments"><img src="https://img.shields.io/badge/03-GPIO_PINS-559BC5?style=plastic" height="48" alt="GPIO Pins"></a>
-<a href="#wiring-diagrams"><img src="https://img.shields.io/badge/04-WIRING-559BC5?style=plastic" height="48" alt="Wiring"></a>
+<a href="#wiring-diagrams"><img src="assets/btn_wiring.svg" alt="WIRING" width="268"></a><a href="#uart-loopback-testing"><img src="assets/btn_uart.svg" alt="UART LOOPBACK" width="268"></a><a href="#i2c-scanner-testing"><img src="assets/btn_i2c.svg" alt="I2C SCANNER" width="268"></a>
 
-<a href="#uart-loopback-testing"><img src="https://img.shields.io/badge/05-UART_TEST-559BC5?style=plastic" height="48" alt="UART"></a>
-<a href="#i2c-scanner-testing"><img src="https://img.shields.io/badge/06-I2C_TEST-559BC5?style=plastic" height="48" alt="I2C"></a>
+<a href="#spi-loopback-testing"><img src="assets/btn_spi.svg" alt="SPI LOOPBACK" width="268"></a><a href="#baud-rate-experiment"><img src="assets/btn_baud-rate.svg" alt="BAUD RATE" width="268"></a><a href="#expected-vs-observed-results"><img src="assets/btn_results.svg" alt="RESULTS" width="268"></a>
 
-<a href="#spi-loopback-testing"><img src="https://img.shields.io/badge/07-SPI_TEST-559BC5?style=plastic" height="48" alt="SPI"></a>
-<a href="#baud-rate-experiment"><img src="https://img.shields.io/badge/08-BAUD_RATE-559BC5?style=plastic" height="48" alt="Baud Rate"></a>
-
-<a href="#expected-vs-observed-results"><img src="https://img.shields.io/badge/09-RESULTS-559BC5?style=plastic" height="48" alt="Results"></a>
-<a href="#guide-questions"><img src="https://img.shields.io/badge/10-QUESTIONS-559BC5?style=plastic" height="48" alt="Questions"></a>
-
-<a href="#conclusion"><img src="https://img.shields.io/badge/11-CONCLUSION-559BC5?style=plastic" height="48" alt="Conclusion"></a>
+<a href="#guide-questions"><img src="assets/btn_questions.svg" alt="GUIDE QUESTIONS" width="268"></a><a href="#conclusion"><img src="assets/btn_conclusion.svg" alt="CONCLUSION" width="268"></a>
 
 </div>
 
@@ -42,88 +27,87 @@ ESP32-DevKitC (ESP-WROOM-32) | Arduino IDE
 
 ## Project Overview
 
-![Blue Divider](https://placehold.co/1100x12/DCEFFC/DCEFFC.png)
+![Light blue section divider](assets/section_bar.svg)
 
-This laboratory activity verifies three wired communication interfaces on the ESP32 microcontroller: Universal Asynchronous Receiver/Transmitter (UART), Inter-Integrated Circuit (I2C), and Serial Peripheral Interface (SPI).
-
-Each interface is tested using an Arduino sketch to observe its behavior under different connection conditions.
+This laboratory verifies three ESP32 wired communication interfaces: **UART**, **I2C**, and **SPI**. Each interface is tested using an Arduino sketch to compare expected and observed behavior with and without the required hardware connection.
 
 ### Objectives
 
-- Verify UART communication using a TX-to-RX loopback.
-- Detect an I2C OLED display through address scanning.
-- Verify SPI transfers using a MOSI-to-MISO loopback.
-- Observe communication with and without physical connections.
-- Examine the effects of mismatched baud rates.
+- Verify UART communication using a TX-to-RX loopback connection.
+- Detect an I2C OLED display using address scanning.
+- Verify SPI data transfer using a MOSI-to-MISO loopback connection.
+- Compare communication behavior with and without physical connections.
+- Examine the effects of mismatched USB serial baud rates.
 
 ---
 
 ## Materials and Equipment
 
-![Blue Divider](https://placehold.co/1100x12/DCEFFC/DCEFFC.png)
+![Light blue section divider](assets/section_bar.svg)
 
-| Component | Purpose |
-|---|---|
+| Material | Purpose |
+|:---|:---|
 | ESP32-DevKitC (ESP-WROOM-32) | Main microcontroller |
-| USB Type-C Cable | Power and programming |
+| USB Type-C Cable | Power, programming, and Serial Monitor connection |
 | Breadboard | Circuit prototyping |
-| Jumper Wires | Communication connections |
-| I2C OLED Display | Address detection |
-| Computer | Programming and monitoring |
-| Arduino IDE | Development environment |
+| Jumper Wires | Loopback and peripheral wiring |
+| I2C OLED Display | I2C address-scanning test |
+| Computer with Arduino IDE | Sketch uploading and observation |
 
 ---
 
 ## GPIO Pin Assignments
 
-![Blue Divider](https://placehold.co/1100x12/DCEFFC/DCEFFC.png)
+![Light blue section divider](assets/section_bar.svg)
 
-The following GPIO pins were assigned based on the laboratory requirements and lecture reference.
+The following GPIO pins were used during the laboratory activity.
 
-| Interface | Signal | GPIO |
-|---|---|---|
-| UART | TX | GPIO17 |
-| UART | RX | GPIO16 |
-| I2C | SDA | GPIO32 |
-| I2C | SCL | GPIO33 |
-| SPI | SCK | GPIO14 |
-| SPI | MOSI | GPIO13 |
-| SPI | MISO | GPIO26 |
-| SPI | CS | GPIO27 |
+| Interface | Signal | GPIO Used |
+|:---|:---|:---:|
+| UART | TX | **17** |
+| UART | RX | **16** |
+| I2C | SDA | **32** |
+| I2C | SCL | **33** |
+| SPI | SCK | **14** |
+| SPI | MOSI | **13** |
+| SPI | MISO | **26** |
+| SPI | CS | **27** |
 
-**Note:** GPIO27 was used instead of GPIO4 for SPI CS to avoid using a strapping pin.
+> **Pin Selection:** The lecture uses GPIO4 for SPI CS, but GPIO27 was selected to avoid using a strapping pin, following the MOLE laboratory instructions. The remaining GPIO assignments follow the course reference.
 
 ---
 
 ## Wiring Diagrams
 
-![Blue Divider](https://placehold.co/1100x12/DCEFFC/DCEFFC.png)
+![Light blue section divider](assets/section_bar.svg)
 
-The following diagrams show the connections used during each communication test.
+The following diagrams illustrate the connections used to verify each communication interface.
 
-### UART Loopback
+**Safety Reminder:** Disconnect the USB cable before adding or removing jumper wires. Power the OLED module using the ESP32's 3.3V supply.
 
-```mermaid
-flowchart LR
-    A["ESP32 GPIO17 (TX)"] -->|"Jumper Wire"| B["ESP32 GPIO16 (RX)"]
-```
-
-**Connection:** GPIO17 (TX) to GPIO16 (RX).
-
-The UART loopback connection allows transmitted data to return directly to the receiving pin.
-
-### I2C OLED
+### UART — TX/RX Loopback
 
 ```mermaid
 flowchart LR
-    A["ESP32 GPIO32 (SDA)"] --- B["OLED SDA"]
-    C["ESP32 GPIO33 (SCL)"] --- D["OLED SCL"]
-    E["ESP32 3V3"] --- F["OLED VCC"]
-    G["ESP32 GND"] --- H["OLED GND"]
+    TX["ESP32 GPIO17 - TX"] -->|"Jumper Wire"| RX["ESP32 GPIO16 - RX"]
 ```
 
-| OLED Pin | ESP32 Connection |
-|---|---|
+**Physical Connection:** GPIO17 (TX) to GPIO16 (RX).
+
+The transmitted UART data is returned directly to the receiving pin using a jumper wire.
+
+### I2C — OLED Module
+
+```mermaid
+flowchart LR
+    SDA["ESP32 GPIO32 - SDA"] --- OSDA["OLED SDA"]
+    SCL["ESP32 GPIO33 - SCL"] --- OSCL["OLED SCL"]
+    PWR["ESP32 3V3"] --- VCC["OLED VCC"]
+    GND["ESP32 GND"] --- OGND["OLED GND"]
+```
+
+| OLED Pin | ESP32 Pin |
+|:---|:---|
 | SDA | GPIO32 |
 | SCL | GPIO33 |
 | VCC | 3V3 |
@@ -131,31 +115,31 @@ flowchart LR
 
 The OLED uses SDA and SCL for I2C communication and receives power from the ESP32's 3.3V supply.
 
-### SPI Loopback
+### SPI — MOSI/MISO Loopback
 
 ```mermaid
 flowchart LR
-    A["ESP32 GPIO13 (MOSI)"] -->|"Jumper Wire"| B["ESP32 GPIO26 (MISO)"]
-    C["ESP32 GPIO14 (SCK)"]
-    D["ESP32 GPIO27 (CS)"]
+    MOSI["ESP32 GPIO13 - MOSI"] -->|"Jumper Wire"| MISO["ESP32 GPIO26 - MISO"]
+    SCK["ESP32 GPIO14 - SCK configured"]
+    CS["ESP32 GPIO27 - CS configured"]
 ```
 
-**Connection:** GPIO13 (MOSI) to GPIO26 (MISO).
+**Physical Connection:** GPIO13 (MOSI) to GPIO26 (MISO).
 
-GPIO14 (SCK) and GPIO27 (CS) are configured in the sketch without additional external jumper connections for the loopback test.
+GPIO14 (SCK) and GPIO27 (CS) are configured in the sketch but do not require additional jumper connections for this loopback test.
 
 ---
 
 ## UART Loopback Testing
 
-![Blue Divider](https://placehold.co/1100x12/DCEFFC/DCEFFC.png)
+![Light blue section divider](assets/section_bar.svg)
 
-**Source Code:** [uart_loopback.ino](uart_loopback/uart_loopback.ino)
+**Source Code:** [`uart_loopback.ino`](uart_loopback/uart_loopback.ino)
 
 ### Configuration
 
 | Parameter | Setting |
-|---|---|
+|:---|:---|
 | Interface | Serial2 |
 | UART TX | GPIO17 |
 | UART RX | GPIO16 |
@@ -164,11 +148,11 @@ GPIO14 (SCK) and GPIO27 (CS) are configured in the sketch without additional ext
 | Data Format | 8N1 |
 | Transmission Interval | 1 second |
 
-### Test 1 — With Jumper
+### Test 1 — UART With Jumper
 
-**Expected:** The Serial Monitor displays `PING` every second.
+**Expected:** The Serial Monitor should display `PING` every second when UART TX and RX are connected.
 
-**Observed:** Repeated `PING` messages were successfully received through the loopback connection.
+**Observed:** The ESP32 successfully received the transmitted messages, displaying repeated `PING` outputs.
 
 ```text
 PING
@@ -178,30 +162,30 @@ PING
 ```
 
 <details>
-<summary><b>View UART With Jumper Screenshot</b></summary>
+<summary><b>View UART With Jumper — Serial Monitor Screenshot</b></summary>
 
-![UART With Jumper](Screenshots/uart_with_jumper.png)
+![UART with jumper screenshot](Screenshots/uart_with_jumper.png)
 
 </details>
 
-### Test 2 — Without Jumper
+### Test 2 — UART Without Jumper
 
-**Expected:** No new `PING` messages should be received after disconnecting TX and RX.
+**Expected:** No new `PING` messages should be received after disconnecting the TX-to-RX jumper.
 
-**Observed:** Previously displayed messages remained in the Serial Monitor, while incoming messages stopped after the jumper was disconnected.
+**Observed:** The repeated incoming `PING` messages stopped after removing the jumper connection. Previously displayed messages remained visible in the Serial Monitor.
 
 <details>
-<summary><b>View UART Without Jumper Screenshot</b></summary>
+<summary><b>View UART Without Jumper — Serial Monitor Screenshot</b></summary>
 
-![UART Without Jumper](Screenshots/uart_without_jumper.png)
+![UART without jumper screenshot](Screenshots/uart_without_jumper.png)
 
 </details>
 
-### Analysis
+### UART Analysis
 
-UART uses separate TX and RX pins to transmit and receive serial data. Connecting these pins creates a loopback path that allows transmitted data to be received by the same ESP32.
+UART transmits and receives data through separate TX and RX pins. Connecting these pins creates a loopback path that allows transmitted data to return to the same ESP32.
 
-When the jumper is removed, the return path is disconnected.
+Removing the jumper disconnects the return path, preventing the transmitted messages from being received through UART2.
 
 [![Back to Navigation](https://img.shields.io/badge/BACK-NAVIGATION-559BC5?style=for-the-badge)](#navigation)
 
@@ -209,14 +193,14 @@ When the jumper is removed, the return path is disconnected.
 
 ## I2C Scanner Testing
 
-![Blue Divider](https://placehold.co/1100x12/DCEFFC/DCEFFC.png)
+![Light blue section divider](assets/section_bar.svg)
 
-**Source Code:** [i2c_scanner.ino](i2c_scanner/i2c_scanner.ino)
+**Source Code:** [`i2c_scanner.ino`](i2c_scanner/i2c_scanner.ino)
 
 ### Configuration
 
 | Parameter | Setting |
-|---|---|
+|:---|:---|
 | Interface | I2C (Wire) |
 | SDA | GPIO32 |
 | SCL | GPIO33 |
@@ -224,45 +208,47 @@ When the jumper is removed, the return path is disconnected.
 | Detected Address | 0x3C |
 | Serial Monitor | 115200 baud |
 
-### Test 3 — With OLED
+### Test 3 — I2C With OLED
 
-**Expected:** The scanner detects the OLED's I2C address.
+**Expected:** The I2C scanner should detect the connected OLED display and report its address.
 
-**Observed:** The ESP32 detected the OLED display at address `0x3C`.
+**Observed:** The ESP32 successfully detected the OLED module at I2C address `0x3C`.
 
 ```text
 Found device at 0x3C
 ```
 
 <details>
-<summary><b>View I2C With OLED Screenshot</b></summary>
+<summary><b>View I2C With OLED — Serial Monitor Screenshot</b></summary>
 
-![I2C With OLED](Screenshots/i2c_with_oled.png)
+![I2C with OLED screenshot](Screenshots/i2c_with_oled.png)
 
 </details>
 
-### Test 4 — Without OLED
+### Test 4 — I2C Without OLED
 
-**Expected:** The scanner reports that no I2C devices were detected.
+**Expected:** The I2C scanner should report `No I2C devices found` after disconnecting the OLED module.
 
-**Recorded output:**
+**Observed:** After removing the OLED connections, the Serial Monitor displayed `No I2C devices found`, confirming that no I2C devices were detected on the bus.
 
 ```text
 No I2C devices found
 ```
 
 <details>
-<summary><b>View I2C Without OLED Screenshot</b></summary>
+<summary><b>View I2C Without OLED — Serial Monitor Screenshot</b></summary>
 
-![I2C Without OLED](Screenshots/i2c_without_oled.png)
+![I2C without OLED screenshot](Screenshots/i2c_without_oled.png)
 
 </details>
 
-### Analysis
+### I2C Analysis
 
-I2C uses SDA and SCL lines to communicate with peripheral devices using unique addresses.
+I2C communication uses two shared signal lines, SDA and SCL, to communicate with peripheral devices through unique addresses.
 
-The OLED responded at `0x3C`, confirming successful device detection. The display did not need to show text because the scanner only checked for device acknowledgment.
+The scanner successfully identified the connected OLED at address `0x3C`. When the OLED was disconnected, the scanner reported that no devices were found.
+
+The OLED did not need to display graphics or text because the scanner only checked for device acknowledgment.
 
 [![Back to Navigation](https://img.shields.io/badge/BACK-NAVIGATION-559BC5?style=for-the-badge)](#navigation)
 
@@ -270,14 +256,14 @@ The OLED responded at `0x3C`, confirming successful device detection. The displa
 
 ## SPI Loopback Testing
 
-![Blue Divider](https://placehold.co/1100x12/DCEFFC/DCEFFC.png)
+![Light blue section divider](assets/section_bar.svg)
 
-**Source Code:** [spi_loopback.ino](spi_loopback/spi_loopback.ino)
+**Source Code:** [`spi_loopback.ino`](spi_loopback/spi_loopback.ino)
 
 ### Configuration
 
 | Parameter | Setting |
-|---|---|
+|:---|:---|
 | Interface | SPI |
 | SCK | GPIO14 |
 | MOSI | GPIO13 |
@@ -287,12 +273,13 @@ The OLED responded at `0x3C`, confirming successful device detection. The displa
 | Bit Order | MSB First |
 | SPI Mode | Mode 0 |
 | Transmitted Byte | 0xA5 |
+| Transfer Interval | 1 second |
 
-### Test 5 — With Jumper
+### Test 5 — SPI With Jumper
 
-**Expected:** The received byte matches the transmitted byte `0xA5`.
+**Expected:** The received byte should match the transmitted byte `0xA5` when MOSI and MISO are connected.
 
-**Observed:** The ESP32 consistently received `0xA5`, confirming successful SPI loopback communication.
+**Observed:** The ESP32 consistently received `0xA5`, matching the transmitted byte and confirming successful SPI loopback communication.
 
 ```text
 Sent 0xA5, received 0xA5
@@ -301,15 +288,15 @@ Sent 0xA5, received 0xA5
 ```
 
 <details>
-<summary><b>View SPI With Jumper Screenshot</b></summary>
+<summary><b>View SPI With Jumper — Serial Monitor Screenshot</b></summary>
 
-![SPI With Jumper](Screenshots/spi_with_jumper.png)
+![SPI with jumper screenshot](Screenshots/spi_with_jumper.png)
 
 </details>
 
-### Test 6 — Without Jumper
+### Test 6 — SPI Without Jumper
 
-**Expected:** The received byte differs from `0xA5` because MOSI and MISO are disconnected.
+**Expected:** The received byte should differ from the transmitted byte because MOSI and MISO are no longer connected.
 
 **Observed:** The ESP32 consistently received `0x00` instead of `0xA5`.
 
@@ -320,17 +307,19 @@ Sent 0xA5, received 0x00
 ```
 
 <details>
-<summary><b>View SPI Without Jumper Screenshot</b></summary>
+<summary><b>View SPI Without Jumper — Serial Monitor Screenshot</b></summary>
 
-![SPI Without Jumper](Screenshots/spi_without_jumper.png)
+![SPI without jumper screenshot](Screenshots/spi_without_jumper.png)
 
 </details>
 
-### Analysis
+### SPI Analysis
 
-SPI uses separate MOSI and MISO lines and a dedicated clock signal. Connecting MOSI and MISO allows transmitted data to be received through the same microcontroller.
+SPI uses separate MOSI and MISO data lines and a dedicated clock signal to synchronize transfers.
 
-Without the jumper, MISO becomes unconnected and its received value is not guaranteed. During the experiment, the received byte was `0x00`.
+When MOSI and MISO were connected, the transmitted byte `0xA5` was successfully received. After removing the jumper, the MISO input was left unconnected, producing a received value of `0x00` during the experiment.
+
+Since an unconnected input can produce unpredictable values, `0x00` represents the actual observed result rather than a guaranteed output.
 
 [![Back to Navigation](https://img.shields.io/badge/BACK-NAVIGATION-559BC5?style=for-the-badge)](#navigation)
 
@@ -338,42 +327,42 @@ Without the jumper, MISO becomes unconnected and its received value is not guara
 
 ## Baud Rate Experiment
 
-![Blue Divider](https://placehold.co/1100x12/DCEFFC/DCEFFC.png)
+![Light blue section divider](assets/section_bar.svg)
 
-This experiment examines the effects of using different baud rates between the ESP32's USB serial connection and the Arduino Serial Monitor.
+This experiment demonstrates the importance of matching baud rates between the ESP32 USB serial connection and the Arduino Serial Monitor.
 
-The UART loopback connection remained between GPIO17 and GPIO16.
+The UART loopback jumper remained connected between GPIO17 and GPIO16.
 
 ### Test 7 — Mismatched Baud Rates
 
 | Parameter | Setting |
-|---|---|
+|:---|:---|
 | Serial.begin() | 9600 |
 | Serial2.begin() | 9600 |
 | Serial Monitor | 115200 baud |
 
-**Expected:** The output becomes unreadable because the baud rates do not match.
+**Expected:** The Serial Monitor should display unreadable or corrupted characters because the baud rates do not match.
 
-**Observed:** The Serial Monitor displayed garbled characters represented by square symbols.
+**Observed:** The Serial Monitor displayed garbled output represented by square symbols instead of readable `PING` messages.
 
 <details>
-<summary><b>View Baud Rate Mismatch Screenshot</b></summary>
+<summary><b>View Baud Rate Mismatch — Serial Monitor Screenshot</b></summary>
 
-![Baud Rate Mismatch](Screenshots/uart_9600_mismatch.png)
+![UART baud rate mismatch](Screenshots/uart_9600_mismatch.png)
 
 </details>
 
 ### Test 8 — Matched Baud Rates
 
 | Parameter | Setting |
-|---|---|
+|:---|:---|
 | Serial.begin() | 9600 |
 | Serial2.begin() | 9600 |
 | Serial Monitor | 9600 baud |
 
-**Expected:** Readable `PING` messages appear every second.
+**Expected:** The Serial Monitor should display readable `PING` messages every second.
 
-**Observed:** The Serial Monitor displayed repeated, readable `PING` messages after setting both baud rates to 9600.
+**Observed:** Readable `PING` messages appeared repeatedly after changing the Serial Monitor baud rate to 9600.
 
 ```text
 PING
@@ -383,19 +372,19 @@ PING
 ```
 
 <details>
-<summary><b>View Matched Baud Rate Screenshot</b></summary>
+<summary><b>View Matched Baud Rate — Serial Monitor Screenshot</b></summary>
 
-![Baud Rate Matched](Screenshots/uart_9600_matched.png)
+![UART baud rate matched](Screenshots/uart_9600_matched.png)
 
 </details>
 
-### Analysis
+### Baud Rate Analysis
 
-UART communication requires matching baud rates because data bits are interpreted according to timing.
+UART communication depends on timing agreement between the transmitter and receiver.
 
-When the ESP32 USB serial baud rate and the Serial Monitor baud rate differed, the output became unreadable. Matching both baud rates restored readable communication.
+When the ESP32 USB serial baud rate and the Serial Monitor baud rate were different, the output became unreadable. Matching both baud rates restored readable communication.
 
-After testing, the USB serial connection was restored to 115200 baud.
+After the experiment, the USB serial connection was restored to `115200` baud, while `Serial2` remained at `9600` baud.
 
 [![Back to Navigation](https://img.shields.io/badge/BACK-NAVIGATION-559BC5?style=for-the-badge)](#navigation)
 
@@ -403,28 +392,30 @@ After testing, the USB serial connection was restored to 115200 baud.
 
 ## Expected vs Observed Results
 
-![Blue Divider](https://placehold.co/1100x12/DCEFFC/DCEFFC.png)
+![Light blue section divider](assets/section_bar.svg)
+
+The following table summarizes the expected and observed results of all eight laboratory tests.
 
 | Test | Expected | Observed |
-|---|---|---|
+|:---|:---|:---|
 | UART with jumper | `PING` every second | Repeated `PING` messages |
-| UART without jumper | No new `PING` | Incoming messages stopped |
-| I2C with module | OLED address detected | `Found device at 0x3C` |
-| I2C without module | No devices detected | `No I2C devices found` |
+| UART without jumper | No new `PING` | Incoming `PING` messages stopped |
+| I2C with OLED | OLED address detected | `Found device at 0x3C` |
+| I2C without OLED | `No I2C devices found` | `No I2C devices found` |
 | SPI with jumper | Receives `0xA5` | Received `0xA5` |
-| SPI without jumper | Different received value | Received `0x00` |
-| Sketch 9600, Monitor 115200 | Unreadable output | Garbled square symbols |
+| SPI without jumper | Different or undefined received value | Received `0x00` |
+| Sketch 9600, Monitor 115200 | Unreadable characters | Garbled square symbols |
 | Sketch 9600, Monitor 9600 | Readable `PING` | Repeated `PING` messages |
 
 ---
 
 ## Guide Questions
 
-![Blue Divider](https://placehold.co/1100x12/DCEFFC/DCEFFC.png)
+![Light blue section divider](assets/section_bar.svg)
 
 ### 1. Why does UART need both sides to use the same baud rate, while SPI uses a clock line?
 
-UART is asynchronous and does not have a separate clock signal, so both devices must use matching baud rates to interpret transmitted bits correctly. SPI uses a dedicated clock line to synchronize data transmission and reception.
+UART is asynchronous and does not use a separate clock signal, so both devices must use matching baud rates to interpret transmitted bits correctly. SPI uses a dedicated clock line to synchronize data transmission and reception.
 
 ### 2. Why can two devices with the same address not share one I2C bus?
 
@@ -440,13 +431,13 @@ CS is set HIGH to deselect the SPI device when no communication is taking place.
 
 ## Conclusion
 
-![Blue Divider](https://placehold.co/1100x12/DCEFFC/DCEFFC.png)
+![Light blue section divider](assets/section_bar.svg)
 
 Laboratory Activity 8 demonstrated the operation of three wired communication interfaces using the ESP32-DevKitC: UART, I2C, and SPI.
 
-UART loopback successfully returned transmitted `PING` messages when TX and RX were connected. The I2C scanner detected an OLED display at address `0x3C`, while SPI loopback successfully returned the transmitted byte `0xA5`.
+UART loopback communication successfully returned the transmitted `PING` messages when TX and RX were connected. The I2C scanner detected the OLED display at address `0x3C`, while SPI loopback successfully returned the transmitted byte `0xA5`.
 
-The experiments also demonstrated how removing physical connections affects communication and how mismatched serial baud rates produce unreadable output.
+The experiments also demonstrated how removing physical connections affects communication and how mismatched serial baud rates can cause unreadable output.
 
 Overall, the activity provided practical experience in configuring, testing, and troubleshooting wired communication interfaces using the ESP32 microcontroller.
 
@@ -454,10 +445,10 @@ Overall, the activity provided practical experience in configuring, testing, and
 
 <div align="center">
 
-### BCA188 — Laboratory Activity 8
+**BCA188 — Laboratory Activity 8**
 
-*Wired Communication | UART · I2C · SPI*
+*Wired Communication · UART / I2C / SPI*
 
-<a href="#navigation"><img src="https://img.shields.io/badge/BACK_TO-NAVIGATION-559BC5?style=plastic" height="48" alt="Back to Navigation"></a>
+<a href="#navigation"><img src="assets/btn_overview.svg" alt="Back to Navigation" width="250"></a>
 
 </div>

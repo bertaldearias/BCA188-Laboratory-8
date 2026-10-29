@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="290" height="89" viewBox="0 0 290 89">
+<defs><linearGradient id="button" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EDF9FF"/><stop offset="0.47" stop-color="#B5E3F9"/><stop offset="1" stop-color="#83C6EA"/></linearGradient></defs>
+<rect x="9" y="13" width="272" height="68" rx="16" fill="#3F8CB8" opacity="0.30"/>
+<rect x="8" y="5" width="274" height="70" rx="16" fill="url(#button)" stroke="#6EAAD1" stroke-width="2"/>
+<path d="M24 13 H266 Q274 13 274 21 V34 H16 V21 Q16 13 24 13Z" fill="#FFFFFF" opacity="0.40"/>
+<path d="M24 67 H266" stroke="#5497BE" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+<text x="27" y="47" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#387A9C">09</text>
+<path d="M60 22 V57" stroke="#75B6D5" opacity="0.85" stroke-width="2"/>
+<text x="171" y="47" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18.5" font-weight="700" fill="#194867">RESULTS</text>
+</svg>
